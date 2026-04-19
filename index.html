@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>På'an Igjen – Gratis Webinar for Menn 55+</title>
+    <meta name="description" content="Bli mannen kvinner faktisk stopper ved – og svarer. Meld deg på Torills gratis webinar og lær strategien som gir deg oppmerksomheten du fortjener.">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1184737343844896');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1184737343844896&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- intl-tel-input -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/css/intlTelInput.css">
+
+    <!-- Fonts: Inter (sans) + Playfair Display (serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: '#A34E36',
+                        'terracotta-dark': '#8b432e',
+                        beige: '#F4F1EA',
+                        charcoal: '#1A2B3C',
+                        'text-dark': '#1A1A1A',
+                        'text-muted': '#5A5A5A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 30px rgba(0,0,0,0.06)',
+                        'warm': '0 10px 40px rgba(163,78,54,0.25)',
+                        'card': '0 8px 32px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base */
+        body { font-size: 18px; -webkit-font-smoothing: antialiased; }
+
+        /* Fade-in animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .anim-in       { animation: fadeInUp 0.75s ease-out both; }
+        .anim-in-delay { animation: fadeInUp 0.75s ease-out 0.25s both; }
+        .anim-fade     { animation: fadeIn 0.6s ease-out both; }
+
+        /* Scroll-triggered */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal */
+        #modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        #modal-box {
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), opacity 0.3s ease;
+        }
+
+        /* Input focus ring */
+        input:focus { outline: none; box-shadow: 0 0 0 4px rgba(163,78,54,0.12); border-color: #A34E36; }
+
+        /* Smooth hover lift */
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+
+        /* Organic shape blob */
+        .blob {
+            border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+        }
+
+        /* CTA button pulse on page load */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(163,78,54,0.3); }
+            50% { box-shadow: 0 10px 50px rgba(163,78,54,0.55); }
+        }
+        .btn-pulse { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+        /* ── HERO MOVING GRADIENT ── */
+        @keyframes heroGradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-gradient-bg {
+            background: linear-gradient(
+                135deg,
+                #F4F1EA 0%,
+                #EDE8DE 25%,
+                #F9F6EF 50%,
+                #EAE4D8 75%,
+                #F4F1EA 100%
+            );
+            background-size: 300% 300%;
+            animation: heroGradientShift 12s ease infinite;
+        }
+
+        /* ── ROTATING GLOW RING (video container) ── */
+        @keyframes rotateConic {
+            from { --angle: 0deg; }
+            to   { --angle: 360deg; }
+        }
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+        .glow-ring {
+            position: relative;
+            border-radius: 1.5rem; /* rounded-3xl */
+        }
+        .glow-ring::before,
+        .glow-ring::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: inherit;
+            background: conic-gradient(
+                from var(--angle),
+                transparent 0%,
+                rgba(163,78,54,0.85) 25%,
+                rgba(240,200,180,0.6) 40%,
+                transparent 55%
+            );
+            animation: rotateConic 4s linear infinite;
+            z-index: 0;
+        }
+        .glow-ring::after {
+            filter: blur(14px);
+            opacity: 0.55;
+        }
+        .glow-ring > * { position: relative; z-index: 1; }
+
+        /* ── ROTATING GLOW RING (CTA button) ── */
+        .btn-ring {
+            position: relative;
+        }
+        .btn-ring::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 1rem; /* rounded-2xl */
+            background: conic-gradient(
+                from var(--angle),
+                transparent 0%,
+                rgba(163,78,54,0.9) 20%,
+                rgba(240,210,190,0.6) 35%,
+                transparent 50%
+            );
+            animation: rotateConic 3s linear infinite;
+            z-index: -1;
+        }
+
+        /* ── COUNTDOWN TIMER ── */
+        .countdown-block {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            border: 1px solid rgba(163,78,54,0.15);
+            border-radius: 0.875rem;
+            padding: 0.6rem 1rem;
+            min-width: 72px;
+            box-shadow: 0 4px 18px rgba(163,78,54,0.08);
+        }
+        .countdown-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #A34E36;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .countdown-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #5A5A5A;
+            margin-top: 0.2rem;
+        }
+        .countdown-sep {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #A34E36;
+            align-self: center;
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+
+        /* ── intl-tel-input override ── */
+        .iti { width: 100%; }
+        .iti__tel-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid #e7e5e4;
+            background-color: #fafaf9;
+            font-size: 1.125rem;
+            color: #1A1A1A;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .iti__tel-input:focus {
+            outline: none;
+            border-color: #A34E36;
+            box-shadow: 0 0 0 4px rgba(163,78,54,0.12);
+        }
+
+        /* Section divider wave */
+        .wave-bottom {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+    </style>
+</head>
+<body class="bg-beige font-sans text-text-dark antialiased text-lg">
+
+<!-- ============================================================
+     STICKY HEADER
+     ============================================================ -->
+<header class="sticky top-0 z-50 w-full bg-[#1a2b3c] text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-6">
+
+        <!-- Left: Event info -->
+        <p class="text-sm md:text-base font-medium tracking-wide whitespace-nowrap">
+            📅&nbsp;&nbsp;Neste webinar:&nbsp;<strong class="text-white">Onsdag 22. april kl. 19:00</strong>
+        </p>
+
+        <!-- Right: Countdown -->
+        <div class="flex items-center gap-2 text-sm font-semibold">
+            <span class="text-white/50 text-xs uppercase tracking-widest hidden sm:inline">Starter om:</span>
+            <div class="flex items-center gap-1.5">
+                <div class="w-20 flex flex-col items-center justify-center bg-white/10 rounded-lg py-1.5">
+                    <span id="hdr-days" class="text-lg font-bold font-serif leading-none text-white">--</span>
+                    <span class="text-[9px] uppercase tracking-widest text-white/60 mt-0.5">Dager</span>
+                </div>
+                <span class="text-white/40 text-lg font-bold mb-1">:</span>
+                <div class="w-20 flex flex-col items-center justify-center bg-white/10 rounded-lg py-1.5">
+                    <span id="hdr-hours" class="text-lg font-bold font-serif leading-none text-white">--</span>
+                    <span class="text-[9px] uppercase tracking-widest text-white/60 mt-0.5">Timer</span>
+                </div>
+                <span class="text-white/40 text-lg font-bold mb-1">:</span>
+                <div class="w-20 flex flex-col items-center justify-center bg-white/10 rounded-lg py-1.5">
+                    <span id="hdr-mins" class="text-lg font-bold font-serif leading-none text-white">--</span>
+                    <span class="text-[9px] uppercase tracking-widest text-white/60 mt-0.5">Minutter</span>
+                </div>
+                <span class="text-white/40 text-lg font-bold mb-1">:</span>
+                <div class="w-20 flex flex-col items-center justify-center bg-white/10 rounded-lg py-1.5">
+                    <span id="hdr-secs" class="text-lg font-bold font-serif leading-none text-white">--</span>
+                    <span class="text-[9px] uppercase tracking-widest text-white/60 mt-0.5">Sekunder</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<!-- ============================================================
+     SECTION 1 – HERO  (Soft Beige BG, 50/50 split)
+     ============================================================ -->
+<section class="w-full hero-gradient-bg relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- LEFT: Text -->
+        <div class="flex flex-col gap-7 anim-in">
+            <!-- Overline -->
+            <p class="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-terracotta">
+                <span class="w-8 h-px bg-terracotta inline-block"></span>
+                Gratis Webinar: På'an Igjen
+            </p>
+
+            <!-- Main Headline -->
+            <h1 class="font-serif text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-text-dark">
+                Bli mannen kvinner faktisk
+                <span class="text-terracotta italic">stopper ved</span>
+                – og svarer
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xl text-text-muted leading-relaxed max-w-lg">
+                Slik får du kvinner til å stoppe ved profilen din (og faktisk svare når du tar kontakt)
+            </p>
+
+
+            <!-- CTA Button -->
+            <div class="flex flex-col gap-3 mt-2">
+                <button
+                    class="open-modal-btn bg-[#A34E36] hover:bg-[#8A422D] text-white font-bold text-lg py-4 px-8 rounded-xl transition-colors duration-200 inline-flex items-center gap-3 w-fit"
+                    id="hero-cta"
+                    aria-label="Meld deg på gratis webinar"
+                >
+                    MELD DEG PÅ GRATIS WEBINAR
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </button>
+
+                <!-- Microcopy -->
+                <p class="text-base text-text-muted leading-snug">
+                    Webinaret er laget spesielt for menn over 55 som seriøst ønsker seg en kjæreste og en livsledsager.
+                </p>
+
+                <!-- Scarcity text -->
+                <p class="text-sm font-semibold text-terracotta flex items-center gap-2">
+                    <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                    Begrenset antall plasser på live-webinaret – Sikre din plass nå.
+                </p>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="flex flex-wrap items-center gap-5 mt-2 text-sm text-text-muted font-medium">
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    100% gratis
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    Live webinar
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    Praktiske råd du kan bruke med én gang
+                </span>
+            </div>
+        </div>
+
+        <!-- RIGHT: Video with rotating glow ring -->
+        <div class="relative anim-in-delay flex justify-center">
+
+            <!-- Outer glow ring wrapper -->
+            <div class="glow-ring w-full aspect-[3/4]">
+                <!-- Layered shadow backdrops -->
+                <div class="absolute inset-0 bg-terracotta/10 translate-x-5 translate-y-5 rounded-3xl -z-10"></div>
+                <div class="absolute inset-0 bg-stone-300/40 translate-x-10 translate-y-10 rounded-3xl -z-20"></div>
+
+                <!-- Video container -->
+                <div class="relative overflow-hidden rounded-3xl w-full h-full border-8 border-white">
+                    <video
+                        id="torillVideo"
+                        src="https://assets.cdn.filesafe.space/9TSpdZGYPUV527IflKYA/media/69bfb76fad14006e95e4fead.mp4"
+                        autoplay loop muted playsinline
+                        class="w-full h-full object-cover"
+                    ></video>
+
+                    <!-- Unmute overlay button -->
+                    <button
+                        id="unmuteBtn"
+                        class="absolute inset-0 w-full h-full flex items-center justify-center z-20 cursor-pointer bg-transparent"
+                        aria-label="Slå på lyd"
+                    >
+                        <span class="inline-flex items-center gap-2 bg-black/50 hover:bg-black/70 transition-colors duration-200 text-white font-bold text-base md:text-lg px-6 py-3 rounded-full backdrop-blur-sm shadow-lg tracking-wide">
+                            🔊 KLIKK FOR LYD
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Floating badge -->
+            <div class="absolute -bottom-6 -left-4 md:-left-8 bg-white py-4 px-6 rounded-2xl shadow-card z-20 flex items-center gap-4">
+                <div class="flex -space-x-3">
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/100?img=11" alt="Deltaker">
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/100?img=12" alt="Deltaker">
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/100?img=13" alt="Deltaker">
+                </div>
+                <div>
+                    <p class="text-base font-bold text-text-dark">200+ menn</p>
+                    <p class="text-xs text-text-muted">har allerede deltatt</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 – ER DETTE DEG?  (Dark Charcoal BG, White Text)
+     ============================================================ -->
+<section class="w-full bg-charcoal text-white py-20 md:py-32 relative">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <!-- Heading -->
+        <div class="text-center mb-14 scroll-reveal">
+            <p class="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">Kjenner du deg igjen?</p>
+            <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white">Er dette deg?</h2>
+        </div>
+
+        <!-- Pain point cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 scroll-reveal">
+
+            <!-- Card 1 -->
+            <div class="card-hover bg-[#243549] p-8 rounded-2xl border border-white/10 shadow-xl flex items-start gap-5">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </div>
+                <p class="text-lg text-gray-200 leading-relaxed font-medium">Du har vært singel lenger enn du ønsker.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-hover bg-[#243549] p-8 rounded-2xl border border-white/10 shadow-xl flex items-start gap-5">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </div>
+                <p class="text-lg text-gray-200 leading-relaxed font-medium">Du har prøvd Tinder, Match, Sukker – kanskje alle samtidig.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-hover bg-[#243549] p-8 rounded-2xl border border-white/10 shadow-xl flex items-start gap-5">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </div>
+                <p class="text-lg text-gray-200 leading-relaxed font-medium">Du betaler for premium-abonnement, men får nesten ingen respons.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-hover bg-[#243549] p-8 rounded-2xl border border-white/10 shadow-xl flex items-start gap-5">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </div>
+                <p class="text-lg text-gray-200 leading-relaxed font-medium">Når du faktisk får en match... vet du ikke helt hva du skal skrive.</p>
+            </div>
+        </div>
+
+        <!-- Highlighted Quote -->
+        <div class="mt-12 md:mt-16 scroll-reveal">
+            <div class="relative bg-[#243549] border-l-4 border-terracotta rounded-2xl p-10 md:p-14 overflow-hidden">
+                <!-- Giant decorative quote mark -->
+                <span class="absolute -top-6 -left-2 text-[14rem] font-serif text-white opacity-[0.03] leading-none select-none">"</span>
+                <p class="relative z-10 font-serif text-2xl md:text-3xl leading-snug text-center">
+                    <strong class="font-bold text-[#A34E36]">"Det er ikke deg det er noe galt med. Det er profilen din."</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 – I DETTE GRATIS WEBINARET LÆRER DU  (Soft Beige BG)
+     ============================================================ -->
+<section class="w-full bg-beige py-20 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <!-- Heading -->
+        <div class="text-center mb-14 scroll-reveal">
+            <p class="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">Webinarets innhold</p>
+            <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-text-dark">
+                I dette gratis webinaret<br class="hidden md:block"> lærer du
+            </h2>
+        </div>
+
+        <!-- 3-Column Card Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-reveal">
+
+            <!-- Card 1 -->
+            <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-stone-100">
+                <div class="overflow-hidden h-52 md:h-56 bg-stone-200">
+                    <img
+                        src="https://assets.cdn.filesafe.space/9TSpdZGYPUV527IflKYA/media/69d34dfa674ebc9be9110a98.jpeg"
+                        alt="Profilbilde tips"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-8 flex flex-col gap-4 flex-1">
+                    <div class="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center">
+                        <span class="font-serif font-bold text-terracotta text-lg">1</span>
+                    </div>
+                    <p class="text-lg text-text-muted leading-relaxed">
+                        De 3 bildene som garantert får kvinner til å sveipe forbi – og det ENE bildet som får dem til å stoppe.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-stone-100" style="transition-delay: 0.1s;">
+                <div class="overflow-hidden h-52 md:h-56 bg-stone-200">
+                    <img
+                        src="https://assets.cdn.filesafe.space/9TSpdZGYPUV527IflKYA/media/69d34dfa4cde4bbc2af3f898.png"
+                        alt="Hvem er du – finn din match"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-8 flex flex-col gap-4 flex-1">
+                    <div class="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center">
+                        <span class="font-serif font-bold text-terracotta text-lg">2</span>
+                    </div>
+                    <p class="text-lg text-text-muted leading-relaxed">
+                        Sjekklisten som avslører om hun faktisk kan passe for deg – før du kaster bort timer på chatting.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col border border-stone-100" style="transition-delay: 0.2s;">
+                <div class="overflow-hidden h-52 md:h-56 bg-stone-200">
+                    <img
+                        src="https://assets.cdn.filesafe.space/9TSpdZGYPUV527IflKYA/media/69d34dfa674ebc9be9110a99.png"
+                        alt="Nå er det beste tidspunktet"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-8 flex flex-col gap-4 flex-1">
+                    <div class="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center">
+                        <span class="font-serif font-bold text-terracotta text-lg">3</span>
+                    </div>
+                    <p class="text-lg text-text-muted leading-relaxed">
+                        Hvorfor menn over 55 har en skjult fordel kvinner faktisk verdsetter – og hvordan du viser det i profilen.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA below grid -->
+        <div class="text-center mt-14 scroll-reveal">
+            <button
+                class="open-modal-btn btn-pulse inline-flex items-center justify-center gap-3 bg-terracotta hover:bg-terracotta-dark text-white font-bold py-5 px-12 rounded-2xl text-xl transition-all duration-300 transform hover:-translate-y-1"
+                id="section3-cta"
+            >
+                JA, JEG VIL DELTA PÅ WEBINARET
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </button>
+            <p class="mt-4 text-base text-text-muted">100% gratis – ingen kredittkort nødvendig</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SOCIAL PROOF BANNER  (Beige BG)
+     ============================================================ -->
+<section class="w-full bg-[#f4f1ea] border-y border-stone-200 py-7">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-5 text-center sm:text-left scroll-reveal">
+        <!-- Avatar stack -->
+        <div class="flex -space-x-3 flex-shrink-0">
+            <img class="w-11 h-11 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/100?img=33" alt="Deltaker">
+            <img class="w-11 h-11 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/100?img=52" alt="Deltaker">
+            <img class="w-11 h-11 rounded-full border-2 border-white object-cover" src="https://i.pravatar.cc/100?img=68" alt="Deltaker">
+        </div>
+        <!-- Text -->
+        <p class="text-lg text-text-dark font-semibold leading-snug max-w-xl">
+            Gjør som over <span class="text-terracotta">200 andre menn</span> som nektet å gi opp jakten på kjærligheten.
+        </p>
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 – HVEM ER JEG? / ABOUT TORILL  (White BG, 50/50)
+     ============================================================ -->
+<section class="w-full bg-white py-20 md:py-32 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- LEFT: Circular / soft-edged profile image -->
+        <div class="flex justify-center lg:justify-start scroll-reveal order-2 lg:order-1 relative">
+            <!-- Soft organic blob shape behind image -->
+            <div class="absolute w-[340px] h-[340px] md:w-[430px] md:h-[430px] bg-beige blob -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+            <div class="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden shadow-2xl border-[10px] border-white bg-stone-200 z-10">
+                <img
+                    src="https://assets.cdn.filesafe.space/9TSpdZGYPUV527IflKYA/media/69d34dfab748ebc5f1822c2c.png"
+                    alt="Torill – rekrutterer, coach og webinar-vert"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                >
+            </div>
+
+            <!-- Decorative terracotta ring -->
+            <div class="absolute w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full border-2 border-dashed border-terracotta/30 z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        </div>
+
+        <!-- RIGHT: Text content -->
+        <div class="flex flex-col gap-8 scroll-reveal order-1 lg:order-2" style="animation-delay: 0.15s;">
+            <div>
+                <p class="text-sm font-bold tracking-widest uppercase text-terracotta mb-3">Din guide og coach</p>
+                <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-text-dark leading-tight">
+                    Hvem er Torill?
+                </h2>
+            </div>
+
+            <div class="space-y-5 text-text-muted text-lg leading-relaxed">
+                <p>
+                    Jeg heter Torill, og jeg har brukt en del tid på dating-apper siste 4 årene. Jeg ble skilt etter jeg fylte 60, men ønsket meg en kjæreste, og måtte plutselig tilpasse meg en helt ny verden når det gjaldt flirting og dating. Vi har konkludert med at 90% av mennene på dating-apper presenterer seg forferdelig dårlig.
+                </p>
+
+                <!-- Highlighted pullquote -->
+                <div class="bg-beige border-l-4 border-terracotta rounded-2xl px-8 py-6 my-2">
+                    <p class="font-serif text-xl md:text-2xl leading-snug">
+                        <strong class="font-bold text-[#A34E36]">"Når 90% gjør det feil, trenger du bare å gjøre det litt bedre enn dem for å skille deg ut."</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bullet credentials -->
+            <ul class="flex flex-col gap-4 text-lg">
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 mt-1 w-6 h-6 rounded-full bg-terracotta/10 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-text-dark font-medium">Rekrutterer, coach og headhunter i mange år</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 mt-1 w-6 h-6 rounded-full bg-terracotta/10 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-text-dark font-medium">Undervist i salgs- og presentasjonsteknikk</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="flex-shrink-0 mt-1 w-6 h-6 rounded-full bg-terracotta/10 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5 text-terracotta" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-text-dark font-medium">Sertifisert coach i personlighetsprofiler</span>
+                </li>
+            </ul>
+
+            <!-- About-section CTA -->
+            <div class="mt-2">
+                <button
+                    class="open-modal-btn inline-flex items-center gap-3 bg-charcoal hover:bg-[#253d52] text-white font-bold py-4 px-9 rounded-2xl text-lg transition-all duration-300 transform hover:-translate-y-1"
+                    id="about-cta"
+                >
+                    Meld deg på gratis webinar
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FAQ SECTION  (White BG)
+     ============================================================ -->
+<section class="w-full bg-white py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-6">
+
+        <!-- Heading -->
+        <div class="text-center mb-12 scroll-reveal">
+            <p class="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">Har du spørsmål?</p>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-text-dark">Vanlige spørsmål</h2>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="flex flex-col gap-4 scroll-reveal" id="faq-list">
+
+            <!-- Q1 -->
+            <div class="faq-item border border-stone-200 rounded-2xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-5 text-left bg-white hover:bg-stone-50 transition-colors">
+                    <span class="font-semibold text-lg text-text-dark">Er webinaret virkelig gratis?</span>
+                    <svg class="faq-icon flex-shrink-0 w-5 h-5 text-terracotta transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-panel hidden px-7 pb-6">
+                    <p class="text-text-muted text-lg leading-relaxed">Ja, det er 100% gratis og uforpliktende å delta.</p>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="faq-item border border-stone-200 rounded-2xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-5 text-left bg-white hover:bg-stone-50 transition-colors">
+                    <span class="font-semibold text-lg text-text-dark">Trenger jeg å være god på teknologi?</span>
+                    <svg class="faq-icon flex-shrink-0 w-5 h-5 text-terracotta transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-panel hidden px-7 pb-6">
+                    <p class="text-text-muted text-lg leading-relaxed">Nei, du klikker bare på lenken du får på e-post, så er du inne. Veldig enkelt.</p>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="faq-item border border-stone-200 rounded-2xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-5 text-left bg-white hover:bg-stone-50 transition-colors">
+                    <span class="font-semibold text-lg text-text-dark">Hva skjer om jeg ikke kan delta live på torsdag?</span>
+                    <svg class="faq-icon flex-shrink-0 w-5 h-5 text-terracotta transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-panel hidden px-7 pb-6">
+                    <p class="text-text-muted text-lg leading-relaxed">Meld deg på uansett! Alle som er påmeldt får tilsendt et opptak som er tilgjengelig i 48 timer etter onsdagen 22. april.</p>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="faq-item border border-stone-200 rounded-2xl overflow-hidden">
+                <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-5 text-left bg-white hover:bg-stone-50 transition-colors">
+                    <span class="font-semibold text-lg text-text-dark">Vil andre se meg på webinaret?</span>
+                    <svg class="faq-icon flex-shrink-0 w-5 h-5 text-terracotta transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-panel hidden px-7 pb-6">
+                    <p class="text-text-muted text-lg leading-relaxed">Nei. Ditt kamera og mikrofon er automatisk slått av. Webinaret er helt anonymt, du ser og hører bare Torill.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA BANNER  (Terracotta BG)
+     ============================================================ -->
+<section class="w-full bg-terracotta py-20 md:py-28 text-white text-center scroll-reveal">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col items-center gap-7">
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Klar til å ta kontrollen<br class="hidden md:block"> over dating-profilen din?
+        </h2>
+        <p class="text-xl text-white/80 max-w-xl">
+            Sikre din gratis plass i dag – og ta det første steget mot kjærligheten.
+        </p>
+        <button
+            class="open-modal-btn bg-white text-terracotta font-bold py-5 px-12 rounded-2xl text-xl shadow-warm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+            id="final-cta"
+        >
+            JA – JEG VIL HA MIN PLASS!
+        </button>
+        <p class="text-white/60 text-base">Onsdag 22. april kl. 19:00 · 100% gratis</p>
+    </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="w-full bg-charcoal py-10 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <p class="text-base font-semibold text-white/80 font-serif italic">På'an Igjen – Webinar med Torill</p>
+        <p class="text-sm text-gray-500">&copy; 2026. Alle rettigheter forbeholdt.</p>
+        <div class="flex gap-5 text-sm text-gray-500">
+            <a href="#" class="hover:text-white transition-colors">Personvern</a>
+            <span class="text-gray-700">|</span>
+            <a href="#" class="hover:text-white transition-colors">Vilkår</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+     MODAL POP-UP (Registration Form)
+     ============================================================ -->
+<div
+    id="modal-overlay"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+>
+    <div
+        id="modal-box"
+        class="w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden scale-95 opacity-0"
+    >
+        <!-- Modal top accent strip -->
+        <div class="h-1.5 bg-gradient-to-r from-terracotta to-terracotta-dark w-full"></div>
+
+        <div class="p-10 md:p-12 relative">
+            <!-- Close button -->
+            <button
+                id="modal-close"
+                class="absolute top-5 right-5 w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 text-text-muted hover:text-text-dark flex items-center justify-center transition-colors"
+                aria-label="Lukk"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+
+            <!-- Modal header -->
+            <div class="mb-8 text-center">
+                <h3 id="modal-title" class="font-serif text-4xl font-bold text-text-dark mb-2">Meld deg på nå</h3>
+                <p class="text-text-muted text-lg">Sikre din gratis plass på webinaret</p>
+            </div>
+
+            <!-- Form -->
+            <form id="webinar-form" class="flex flex-col gap-5" novalidate>
+
+                <!-- Fornavn -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="field-fornavn" class="text-sm font-semibold text-text-dark">Fornavn *</label>
+                    <input
+                        type="text"
+                        id="field-fornavn"
+                        name="first_name"
+                        placeholder="Ditt fornavn"
+                        required
+                        autocomplete="given-name"
+                        class="w-full px-5 py-4 rounded-2xl border border-stone-200 bg-stone-50 text-lg text-text-dark placeholder-stone-400 hover:border-stone-300 transition-colors"
+                    >
+                </div>
+
+                <!-- E-post -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="field-epost" class="text-sm font-semibold text-text-dark">E-post *</label>
+                    <input
+                        type="email"
+                        id="field-epost"
+                        name="email"
+                        placeholder="din@epost.no"
+                        required
+                        autocomplete="email"
+                        class="w-full px-5 py-4 rounded-2xl border border-stone-200 bg-stone-50 text-lg text-text-dark placeholder-stone-400 hover:border-stone-300 transition-colors"
+                    >
+                </div>
+
+                <!-- Telefon -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="field-telefon" class="text-sm font-semibold text-text-dark">Telefonnummer (for SMS-påminnelser) *</label>
+                    <input
+                        type="tel"
+                        id="field-telefon"
+                        name="phone"
+                        required
+                        autocomplete="tel"
+                    >
+                    <span id="phone-error" class="hidden text-sm text-red-500"></span>
+                </div>
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="w-full mt-2 bg-terracotta hover:bg-terracotta-dark text-white font-bold py-5 px-8 rounded-2xl text-xl shadow-warm transition-all duration-300 transform hover:-translate-y-1"
+                >
+                    MELD DEG PÅ GRATIS WEBINAR
+                </button>
+
+                <p class="text-center text-sm text-stone-400">
+                    Dine opplysninger er trygge og behandles konfidensielt.
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/intlTelInput.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* ── intl-tel-input ── */
+        const phoneInput = document.getElementById('field-telefon');
+        const phoneError = document.getElementById('phone-error');
+
+        const iti = window.intlTelInput(phoneInput, {
+            initialCountry: 'auto',
+            geoIpLookup: cb => {
+                fetch('https://ipwho.is/')
+                    .then(r => r.json())
+                    .then(d => cb(d.country_code || 'NO'))
+                    .catch(() => cb('NO'));
+            },
+            utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js',
+            separateDialCode: true,
+        });
+
+        const ITI_ERRORS = ['Ugyldig nummer', 'Ugyldig landskode', 'For kort', 'For langt', 'Ugyldig nummer'];
+
+        function validatePhone() {
+            if (!phoneInput.value.trim()) {
+                phoneError.textContent = 'Telefonnummer er påkrevd';
+                phoneError.classList.remove('hidden');
+                return false;
+            }
+            if (!iti.isValidNumber()) {
+                const code = iti.getValidationError();
+                phoneError.textContent = ITI_ERRORS[code] ?? 'Ugyldig nummer';
+                phoneError.classList.remove('hidden');
+                return false;
+            }
+            phoneError.classList.add('hidden');
+            return true;
+        }
+
+        phoneInput.addEventListener('blur', validatePhone);
+
+        /* ── MODAL ── */
+        const overlay  = document.getElementById('modal-overlay');
+        const box      = document.getElementById('modal-box');
+        const closeBtn = document.getElementById('modal-close');
+        const openBtns = document.querySelectorAll('.open-modal-btn');
+
+        function openModal() {
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100', 'pointer-events-auto');
+            box.classList.remove('scale-95', 'opacity-0');
+            box.classList.add('scale-100', 'opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            box.classList.remove('scale-100', 'opacity-100');
+            box.classList.add('scale-95', 'opacity-0');
+            document.body.style.overflow = '';
+        }
+
+        openBtns.forEach(btn => btn.addEventListener('click', openModal));
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        /* ── UTM + Meta cookie helpers ── */
+        function getCookie(name) {
+            const parts = `; ${document.cookie}`.split(`; ${name}=`);
+            return parts.length === 2 ? parts.pop().split(';').shift() : '';
+        }
+
+        function getTrackingData() {
+            const p = new URLSearchParams(window.location.search);
+            return {
+                utm_source:   p.get('utm_source')   || '',
+                utm_medium:   p.get('utm_medium')   || '',
+                utm_campaign: p.get('utm_campaign') || '',
+                utm_content:  p.get('utm_content')  || '',
+                utm_term:     p.get('utm_term')     || '',
+                fbclid:       p.get('fbclid')       || '',
+                fbc:          getCookie('_fbc')     || '',
+                fbp:          getCookie('_fbp')     || '',
+            };
+        }
+
+        /* ── FORM SUBMIT ── */
+        document.getElementById('webinar-form').addEventListener('submit', async e => {
+            e.preventDefault();
+
+            if (!validatePhone()) {
+                phoneInput.focus();
+                return;
+            }
+
+            const btn = e.currentTarget.querySelector('[type=submit]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sender...';
+            btn.disabled = true;
+
+            const form = e.target;
+            const payload = {
+                first_name: form.querySelector('[name="first_name"]').value.trim(),
+                email:      form.querySelector('[name="email"]').value.trim(),
+                phone:      iti.getNumber(),
+                page_url:   window.location.href,
+                timestamp:  new Date().toISOString(),
+                ...getTrackingData(),
+            };
+
+            try {
+                const res = await fetch('https://torill-webinar-worker.lloyd-685.workers.dev/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!res.ok) throw new Error('Server error');
+
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead', {
+                        content_name: document.title,
+                        content_category: 'webinar_registration',
+                    });
+                }
+
+                window.location.href = '/takk/' + window.location.search;
+
+            } catch (err) {
+                console.error('Submit error:', err);
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert('Noe gikk galt. Vennligst prøv igjen.');
+            }
+        });
+
+        /* ── SCROLL REVEAL ── */
+        const revealEls = document.querySelectorAll('.scroll-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        /* ── COUNTDOWN TIMER ── */
+        (function () {
+            // 22. april 2026 kl. 19:00 Oslo (CEST = UTC+2) → 17:00 UTC
+            const TARGET = new Date('2026-04-22T17:00:00Z').getTime();
+
+            const hdrDays  = document.getElementById('hdr-days');
+            const hdrHours = document.getElementById('hdr-hours');
+            const hdrMins  = document.getElementById('hdr-mins');
+            const hdrSecs  = document.getElementById('hdr-secs');
+
+            function pad(n) { return String(n).padStart(2, '0'); }
+
+            function popAnimate(el) {
+                el.style.transform = 'scale(1.18)';
+                el.style.transition = 'transform 0.12s cubic-bezier(.22,.68,0,1.3)';
+                setTimeout(() => {
+                    el.style.transform = 'scale(1)';
+                    el.style.transition = 'transform 0.2s ease';
+                }, 120);
+            }
+
+            function setEl(el, val) {
+                if (el && el.textContent !== val) {
+                    el.textContent = val;
+                    popAnimate(el);
+                }
+            }
+
+            function tick() {
+                const diff  = TARGET - Date.now();
+                const days  = diff <= 0 ? 0 : Math.floor(diff / 86400000);
+                const hours = diff <= 0 ? 0 : Math.floor((diff % 86400000) / 3600000);
+                const mins  = diff <= 0 ? 0 : Math.floor((diff % 3600000)  / 60000);
+                const secs  = diff <= 0 ? 0 : Math.floor((diff % 60000)    / 1000);
+                setEl(hdrDays, pad(days)); setEl(hdrHours, pad(hours));
+                setEl(hdrMins, pad(mins)); setEl(hdrSecs,  pad(secs));
+            }
+
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        /* ── UNMUTE BUTTON ── */
+        (function () {
+            const video     = document.getElementById('torillVideo');
+            const unmuteBtn = document.getElementById('unmuteBtn');
+            if (!video || !unmuteBtn) return;
+            unmuteBtn.addEventListener('click', function () {
+                video.muted    = false;
+                video.volume   = 1;
+                video.controls = true;
+                unmuteBtn.style.display = 'none';
+                if (document.pictureInPictureEnabled) {
+                    video.requestPictureInPicture().catch(err => console.warn('PiP failed:', err));
+                }
+            });
+        })();
+
+        /* ── FAQ ACCORDION ── */
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item   = btn.closest('.faq-item');
+                const panel  = item.querySelector('.faq-panel');
+                const icon   = btn.querySelector('.faq-icon');
+                const isOpen = !panel.classList.contains('hidden');
+                document.querySelectorAll('.faq-item').forEach(el => {
+                    el.querySelector('.faq-panel').classList.add('hidden');
+                    el.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+                    el.querySelector('.faq-btn').classList.remove('bg-stone-50');
+                });
+                if (!isOpen) {
+                    panel.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                    btn.classList.add('bg-stone-50');
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+name = "torill-webinar-worker"
+main = "worker/index.js"
+compatibility_date = "2024-11-01"
+
+[[d1_databases]]
+binding     = "DB"
+database_name = "torill-leads"
+database_id = "2ff6b1eb-0d28-4280-9f4f-7ae184fc51c6"
+
+# ──────────────────────────────────────────────────────────────
+# Secrets — set via CLI, NEVER hardcode here:
+#
+#   wrangler secret put GHL_API_KEY
+#   wrangler secret put GHL_LOCATION_ID
+#   wrangler secret put GHL_WORKFLOW_ID
+#   wrangler secret put META_ACCESS_TOKEN
+#   wrangler secret put META_PIXEL_ID
+#   wrangler secret put META_TEST_EVENT_CODE   ← fjern etter go-live
+# ──────────────────────────────────────────────────────────────
+
+[vars]
+ALLOWED_ORIGIN = "https://webinar.paanigjen.no"
